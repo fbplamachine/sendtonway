@@ -1,0 +1,8 @@
+<?php return array (
+  0 => '+237694378506',
+  1 => 'admin@sendtonway.com',
+  2 => 'sendtonway_fb',
+  3 => 'sendtonway_twt',
+  4 => 'sendtonway_snap',
+  5 => 'sendtonway_ig',
+);
