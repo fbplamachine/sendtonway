@@ -1,0 +1,12 @@
+{
+    "name": "fbplamachine/sendtonway",
+    "description": "Site web de mise en relation entre particulier dans le domaine de transport de colis. Le site est op\u0000rationnel uniquement au Cameroun (dans toutes les villes du Cameroun).",
+    "type": "project",
+    "authors": [
+        {
+            "name": "fbplamachine",
+            "email": "fouokajunior@gmail.com"
+        }
+    ],
+    "require": {}
+}
