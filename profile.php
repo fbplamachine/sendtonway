@@ -168,7 +168,7 @@
 <body>
 <?php
                             require "php/dbh.inc.php";
-                            date_default_timezone_set('Africa/Algiers');
+                            date_default_timezone_set('Africa/Douala');
                                 $date_jour =  date('Y-m-d');
 
                              $echec = ' SELECT * FROM colis where `date_depot` < \''.$date_jour.'\' ';
@@ -849,7 +849,7 @@
                 if (mysqli_num_rows($result2)!=0) {
                     $ligne2=mysqli_fetch_array($result2);
 
-                    date_default_timezone_set("Africa/Algiers");
+                    date_default_timezone_set("Africa/Douala");
                     $ddd=date("Y-m-d H:i:s");
                     if ($ddd<$ligne2['date_depart'])  echo '<a href="#" onclick="ann(2,'.$ligne_c['id_colis'].','.$ligne_c['id_trajet'].')" class="annul">Annuler ce trajet</a>'; echo '<br>';
 
@@ -939,7 +939,7 @@
 
 
 
-                date_default_timezone_set("Africa/Algiers");
+                date_default_timezone_set("Africa/Douala");
                     $ddd=date("Y-m-d H:i:s");
 
                 if ($ddd<$dd) echo '<label class="tlab" style="float:right;margin-top:100px;"><a href="#" onclick="ann(1,'.$ligne['id_colis'].','.$ligne['id_trajet'].')" class="ett ech">Annuler ce colis</a></label><br>';
@@ -995,7 +995,7 @@
 <div id="histo" style="display: none;margin-top: 200px;">
 
    <?php while (($ligne_c)||($ligne_t)) {
-        if ($ligne_c['date_annonce']>$ligne_t['date_annonce']) {
+        if (isset($ligne_c['date_annonce'])>isset($ligne_t['date_annonce'])) {
             $result = mysqli_query($conn, "SELECT * FROM trajet WHERE id_trajet=".$ligne_c['id_trajet']." limit 1");
 
                 $ligne=mysqli_fetch_array($result);

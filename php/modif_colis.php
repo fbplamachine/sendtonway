@@ -217,7 +217,7 @@ require 'dbh.inc.php';
 $id_colis = $_POST['id_colis'];
 $id_trajet = $_POST['id_trajet'];
 
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 
 $nom_colis = $_POST['N_colis'];
 $taille_colis = $_POST['taille_colis'];

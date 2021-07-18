@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 				$temps=date("Y/m/d H:i:s");
 	if(isset($_POST["id_trajet"])&&isset($_POST["id_colis"])&& isset($_POST['code_notif']) && isset($_POST['id_notif']))//id : trajet colis
 	{
@@ -23,7 +23,7 @@ date_default_timezone_set('Africa/Algiers');
         		mysqli_stmt_bind_param($stmt2,"iiiis",$id_compte_e,$code,$id_colis,$id_trajet,$temps);
         		mysqli_stmt_execute($stmt2);
         		echo json_encode("ssss");
-				
+
 				break;
 				case 3:
 				$sql='SELECT * FROM trajet WHERE id_trajet='.$_POST["id_trajet"];
@@ -43,10 +43,10 @@ date_default_timezone_set('Africa/Algiers');
         mysqli_stmt_execute($stmt2);
         echo json_encode("ssss");
 					break;
-					case 1: 
+					case 1:
 									$sql='UPDATE notification SET acc=1 WHERE id_notif='.$_POST['id_notif'];
 				mysqli_query($conn,$sql);
-	
+
 				$sql='SELECT * FROM trajet WHERE id_trajet='.$_POST["id_trajet"];
 				//chercher id recepteur de la notif
 				$result=mysqli_query($conn, $sql);
@@ -73,8 +73,8 @@ date_default_timezone_set('Africa/Algiers');
 				$row=mysqli_fetch_assoc($result);
 				$id_trajet_ex=$row['id_trajet'];
 				$id_compte_e=$row['id_compte_e'];
-	
-				
+
+
 				$code =$_POST['code_notif'];
 				$id_colis=$_POST['id_colis'];
 				$id_trajet=$_POST['id_trajet'];
@@ -110,7 +110,7 @@ date_default_timezone_set('Africa/Algiers');
 
 				$sql='INSERT INTO deverouille(id_compte1,id_compte2) VALUES ('.$id_compte_e.','.$id_compte2.')';
 				mysqli_query($conn, $sql);
-				
+
 
 				$sql='DELETE FROM trajet WHERE id_trajet='.$id_trajet_ex;
 				mysqli_query($conn,$sql);
@@ -128,7 +128,7 @@ date_default_timezone_set('Africa/Algiers');
 				$code =$_POST['code_notif'];
 				$id_colis=$_POST['id_colis'];
 				$id_trajet=$_POST['id_trajet'];
-								
+
 				$sql='INSERT INTO notification(id_compte_r,code_notif,id_colis,id_trajet,date_temps) VALUES (?,?,?,?,?)';
     $stmt2 =mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt2,$sql) ;
@@ -178,7 +178,7 @@ date_default_timezone_set('Africa/Algiers');
 				$row=mysqli_fetch_assoc($result);
 				$id_trajet_ex=$row['id_trajet'];
 				$id_compte_r=$row['id_compte_e'];
-				
+
 				$sql='UPDATE colis SET id_trajet=? ,etat=? WHERE id_colis=?';//relier le coli avec le trajet
 				$stmt =mysqli_stmt_init($conn);
 				mysqli_stmt_prepare($stmt,$sql);
@@ -206,7 +206,7 @@ date_default_timezone_set('Africa/Algiers');
         mysqli_stmt_bind_param($stmt2,"iiiis",$id_compte_e,$code,$id_colis,$id_trajet,$temps);
         mysqli_stmt_execute($stmt2);
 
-  
+
 
 
         				$sql='DELETE FROM trajet WHERE id_trajet='.$id_trajet_ex;
@@ -236,7 +236,7 @@ date_default_timezone_set('Africa/Algiers');
 
 
 			break;
-			case 5://notif => compte(id_colis) =>refuse de demande trajet 
+			case 5://notif => compte(id_colis) =>refuse de demande trajet
 				$sql='UPDATE notification SET acc=2 WHERE id_notif='.$_POST['id_notif'];
 
 				mysqli_query($conn,$sql);
@@ -255,7 +255,7 @@ date_default_timezone_set('Africa/Algiers');
         mysqli_stmt_bind_param($stmt2,"iiiis",$id_compte_e,$code,$id_colis,$id_trajet,$temps);
         mysqli_stmt_execute($stmt2);
         echo json_encode("ssss");
-				
+
 				break;
 			case 6: //accepte demande premium
 								$sql='SELECT * FROM colis WHERE id_colis='.$_POST["id_colis"];
@@ -263,7 +263,7 @@ date_default_timezone_set('Africa/Algiers');
 				$result=mysqli_query($conn, $sql);
 				$row=mysqli_fetch_assoc($result);
 				$id_compte_e=$row['id_compte_e'];
-				
+
 				$sql='INSERT INTO notification (id_compte_r,code_notif)  VALUES ('.$id_compte_e.',6) WHERE id_notif='.$_POST['id_notif'];
 				mysqli_query($conn,$sql);
 				break;
@@ -273,7 +273,7 @@ date_default_timezone_set('Africa/Algiers');
 				$result=mysqli_query($conn, $sql);
 				$row=mysqli_fetch_assoc($result);
 				$id_compte_e=$row['id_compte_e'];
-				
+
 				$sql='INSERT INTO notification (id_compte_r,code_notif)  VALUES ('.$id_compte_e.',7) WHERE id_notif='.$_POST['id_notif'];
 				mysqli_query($conn,$sql);
 				break;
@@ -281,7 +281,7 @@ date_default_timezone_set('Africa/Algiers');
 
 			break;
 
-			
+
 			default:
 				# code...
 				break;

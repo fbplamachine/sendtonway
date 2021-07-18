@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 session_start();
 
 
@@ -33,7 +33,7 @@ images();
 
     if ($file1_name!='' && $file1_name!=null) {move_uploaded_file($file1_tmp, "img_profiles/".$file1newname);}
     move_uploaded_file($file2_tmp, "cartes_id/".$file2newname);
-    move_uploaded_file($file3_tmp, "contrats/".$file3newname); 
+    move_uploaded_file($file3_tmp, "contrats/".$file3newname);
 
     if ($file1_name!='' && $file1_name!=null) {$sql='UPDATE compte SET photo=? WHERE id_compte=?';$stmt =mysqli_stmt_init($conn);mysqli_stmt_prepare($stmt,$sql);mysqli_stmt_bind_param($stmt,"ss",$file1newname,$id);mysqli_stmt_execute($stmt);    $_SESSION['photo'] = $file1newname;
 }

@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 session_start(); require 'dbh.inc.php';
 if(isset($_POST['sign']))
 {   $p= $_SESSION['si'];

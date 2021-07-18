@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 $id_compte=$_SESSION['id_compte'];
 
          require 'dbh.inc.php';

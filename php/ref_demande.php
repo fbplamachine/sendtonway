@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 session_start(); require 'dbh.inc.php';
 if(isset($_POST['ref']))
 {$r = $_SESSION['rr'];
@@ -14,7 +14,7 @@ mysqli_stmt_prepare($stmt,$sql);
 mysqli_stmt_bind_param($stmt,"sddd",$dt,$r,$c,$v);
 mysqli_stmt_execute($stmt);
 $ppp = "select * from notification where date_temps = '".$dt."' and id_compte_r='".$r."' ";
-$res = mysqli_query($conn,$ppp); 
+$res = mysqli_query($conn,$ppp);
 $rr=$res->fetch_assoc();
 $pr=$rr['id_notif'];
 echo $pr;

@@ -2,7 +2,7 @@
 
 
 /*require 'dbh.inc.php';*/
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 $conn = mysqli_connect("localhost", "root", "", "projet2cp");
 $temps = date('Y/m/d');
 if (isset($_POST['email']) && isset($_POST['view'])) {

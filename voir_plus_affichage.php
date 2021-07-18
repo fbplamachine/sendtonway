@@ -223,7 +223,7 @@
                         {
                         	$('#demande_spec').html(data.demande_spec);
                     	}
-                        $('#tarif').html(data.tarif+'<strong>DA</strong>');
+                        $('#tarif').html(data.tarif+'<strong>FCFA</strong>');
 
             			}
             		function type_notif(data,id_coli,code_notif,id_trajet,id_notif,acc,vu)

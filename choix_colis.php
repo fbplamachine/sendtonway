@@ -88,7 +88,7 @@ return $output;
       }
 
  $connect = mysqli_connect("localhost", "root", "", "projet2cp");
- date_default_timezone_set('Africa/Algiers');
+ date_default_timezone_set('Africa/Douala');
     $date_jour =  date('Y-m-d');
  $connect = mysqli_connect("localhost", "root", "", "projet2cp");
  $echec = ' SELECT * FROM colis where `date_depot` < \''.$date_jour.'\' ';

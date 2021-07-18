@@ -128,7 +128,7 @@ function affichage($row, $row2, $row3, $reg, $result5)
 
     <?php
 
-    date_default_timezone_set('Africa/Algiers');
+    date_default_timezone_set('Africa/Douala');
     $date_jour = $date_annonce = date('Y-m-d');
     $connect = mysqli_connect("localhost", "root", "", "projet2cp");
     $echec = ' SELECT * FROM trajets_non_reguliers where `date_depart` < \'' . $date_jour . '\' ';

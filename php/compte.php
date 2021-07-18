@@ -1,7 +1,7 @@
-<?php 
+<?php
       //  if (isset($_POST['signup'])) {
             # code..
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 session_start();
 $_SESSION['photo']=null;
                         $nom = $_POST['nom'];
@@ -26,7 +26,7 @@ $message="";
             if (empty($nom) || empty($email) || empty($passeword)|| empty($repeated_password) )
             {
                 header("Location: ../signup.php?error=emptyfeilds&uid".$nom."$mail=".$email);
-                
+
                 exit();
             }
 
@@ -35,11 +35,11 @@ $message="";
             elseif ($passeword !== $repeated_password) {
                 # code...
                 header("Location: ../signup.php?error=emptyfeilds&uid".$nom."$mail=".$email);
-                
+
                 //exit();
             }
             else
-            {   
+            {
                 $sql="SELECT mail FROM compte WHERE mail=?";
                 $stmt =mysqli_stmt_init($conn);//not yet
                 if (!mysqli_stmt_prepare($stmt,$sql)) {//preparer une instruc SQL pour l'exe
@@ -55,15 +55,15 @@ $message="";
                     $result=mysqli_stmt_num_rows($stmt);
                     if ($result>0)
                         {
-                            
+
                             header("Location: ../inscription.php?email_existe=yes");
 
 
                             exit();
-                        } 
+                        }
                         else
                         {
-                            
+
                             $sql="INSERT INTO compte(nom,prenom,mot_passe,mail,adresse,tel,date_insc,question,reponse) VALUES(?,?,?,?,?,?,?,?,?)";
                             $stmt =mysqli_stmt_init($conn);//not yet
                             if (!mysqli_stmt_prepare($stmt,$sql)) {//preparer une instruc SQL pour l'exe
@@ -92,7 +92,7 @@ $message="";
                                         premium_premium($_FILES['contrat'],"../contrats",$id,4);
                                         notification($id);
 
-                                        
+
                                     {
 
                                     }
@@ -101,7 +101,7 @@ $message="";
                                 photo($_FILES['img_carte'],"include",$email,2);*/
 
                             }
-                            
+
                                                     $_SESSION['nom']=$_POST['nom'];
                                                     $_SESSION['prenom']=$_POST['prenom'];
                                                     $sql="select * from compte where mail='".$email."' limit 1";
@@ -119,12 +119,12 @@ $message="";
 
                                                     header("location: ../index.php");
                             # code...
-                        
+
                         # code...
                     }
                 }
             }
-            
+
             mysqli_stmt_close($stmt);
             mysqli_close($conn);
         }
@@ -134,7 +134,7 @@ $message="";
         printf("%s %s\n", $col1, $col2);
     }*/
     function premium_premium ($fil,$dossier,$info,$sql_num){
-    
+
         require 'dbh.inc.php';
       $file_name=$fil['name'];
       $file_tmp=$fil['tmp_name'];
@@ -147,10 +147,10 @@ $message="";
     if ($file_error==0) {
     $filenewname=uniqid('',true).".".$ext;
     $file_destination=$dossier."/".$filenewname;
-    move_uploaded_file($file_tmp, $file_destination);  
+    move_uploaded_file($file_tmp, $file_destination);
     switch ($sql_num) {
         case 1:
-                   $sql2="UPDATE compte SET photo = ? WHERE mail=?";                      
+                   $sql2="UPDATE compte SET photo = ? WHERE mail=?";
             break;
             case 2:
                 $sql2= "INSERT premium(id_compte) VALUES (?) ";
@@ -162,11 +162,11 @@ $message="";
                 case 4  :
                 $sql2="UPDATE premium SET contrat = ? WHERE id_compte=?";
                     break;
-                                          
+
                                           default:
                                               # code...
                                               break;
-                                      }                                  
+                                      }
     $stmt2 =mysqli_stmt_init($conn);
 
     if (mysqli_stmt_prepare($stmt2,$sql2) ){
@@ -181,15 +181,15 @@ $message="";
                 mysqli_stmt_bind_param($stmt2,"ss",$filenewname,$info);//not yet
                 mysqli_stmt_execute($stmt2);
             }
-            else 
+            else
             {
                         mysqli_stmt_bind_param($stmt2,"sd",$filenewname,$info);//not yet
              mysqli_stmt_execute($stmt2);
             }
         }
- 
+
         }
-     }                                           
+     }
 }}
  function notification ($id)
  {
@@ -204,7 +204,7 @@ $message="";
         mysqli_stmt_execute($stmt2);
 
     }
-      
+
 
  }
  function images()
@@ -230,6 +230,6 @@ $message="";
     }
 
  }
-    
+
 
 ?>

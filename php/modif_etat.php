@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Algiers');
+date_default_timezone_set('Africa/Douala');
 	session_start();
 	require "dbh.inc.php";
 	$id=$_GET['id'];
@@ -16,7 +16,7 @@ date_default_timezone_set('Africa/Algiers');
 	{
 		header("location: ../page_inaccessible.php?i=1");
 	}
-	
+
 	if ($ligne=mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM colis WHERE id_colis=".$id." limit 1"))) {
 		$t=mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM trajet WHERE id_trajet=".$ligne['id_trajet']." limit 1"));
 		if ($t['id_compte']==$_SESSION['id_compte']){
@@ -30,11 +30,11 @@ date_default_timezone_set('Africa/Algiers');
 			}
 			header("location: ../profile.php?noter=1&id_noter=".$id);
 		} else {
-			header("location: ../page_inaccessible.php");	
+			header("location: ../page_inaccessible.php");
 		}
 	} else {
 		header("location: ../page_inaccessible.php?i=3");
 	}
 
-	
+
 ?>
